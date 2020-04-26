@@ -1,0 +1,38 @@
+/*login */
+
+.login-wrapper{
+	height: 100vh; 
+	background-size: cover !important; 
+	background-repeat: no-repeat !important;
+	width: 100%;
+}
+
+.login-wrapper2{
+	height: 100vh; 
+	width: 100%;
+	padding: 30px 30px;
+}
+
+.login-form{
+	width: 50% !important;
+}
+
+.btn-primary{
+	color: #fff;
+    background-color: #261D56 !important;
+    border-color: #261D56 !important;
+}
+
+@media only screen and (max-width: 640px) {
+	.login-wrapper {
+		height: 200px !important;
+	}
+	.login-wrapper2 {
+		height: auto !important;
+	}
+
+	.login-form{
+		width: 100% !important;
+	}
+}
+
