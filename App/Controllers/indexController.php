@@ -38,6 +38,7 @@ class indexController extends Controller {
 		$this->register();
 	}
 
+
 	public function action_logout(){
 		$result=$this->User->action_logout();
 	}
