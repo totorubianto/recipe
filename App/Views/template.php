@@ -15,7 +15,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
 
-      <a class="navbar-brand" href="#">UlumKitchen</a>
+      <a class="navbar-brand" href="<?php echo BASE . "/index" ?>">UlumKitchen</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,7 +43,7 @@
         <form class="form-inline my-2 my-lg-0">
           <ul class="navbar-nav mr-auto">
             <?php if(!empty($_SESSION['username'])){ ?>
-              <a href="<?php echo BASE . '/index/login'?>" class="btn btn-primary my-2 mr-2 my-sm-0" type="submit">Add Receipe</a> 
+              <a href="<?php echo BASE . '/recipe/add_recipe'?>" class="btn btn-primary my-2 mr-2 my-sm-0">Add Receipe</a> 
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo BASE . '/index/action_logout'?>"><?php echo $_SESSION['username']?></a>
               </li>

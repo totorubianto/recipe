@@ -18,6 +18,7 @@ class User extends Model{
 		$fetch=$result->fetch_assoc();
 		if($check > 0){
 			$_SESSION['username'] = $fetch['username'];
+			$_SESSION['id'] = $fetch['id'];
 			$_SESSION['status'] = "login";
 			header("location:". BASE . '/index/login');
 		}else{
@@ -37,7 +38,7 @@ class User extends Model{
 		}
 		$sql="INSERT INTO users (email, password, role, username) VALUES ('$email', '$password', 'USER', '$username');";
 		$result=$this->db->query($sql);
-				header("location:". BASE . '/index/login');
+		header("location:". BASE . '/index/login');
 		return $result;
 	}
 

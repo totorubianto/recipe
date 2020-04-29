@@ -2,15 +2,18 @@
 
 namespace App\Controllers;
 use App\Core\Controller,
-App\Models\User;
+App\Models\User,
+App\Models\Recipe;
 
 class indexController extends Controller {
 	public function __construct(){
 		$this->User=new User;
+		$this->Recipe=new Recipe;
 	}
 	public function index() {
 		$result=$this->User->get();
-		$this->loadTemplate('home', array('result'=>$result));
+		$recipe=$this->Recipe->get();
+		$this->loadTemplate('home', array('recipe'=>$recipe, 'result'=>$result));
 	}
 
 	public function login() {

@@ -6,6 +6,7 @@ $config = array();
 define("BASE","http://localhost/recipe");
 define("BASEADMIN", BASE. "admin");
 define("BASEDIR", __DIR__ . '/');
+define("PUBLIC_DIR", __DIR__ . '/assets/images/uploads/');
 define("PROJECTPATH", dirname(__DIR__) . '/recipe');
 
 $config['dbname']= 'recipe';
