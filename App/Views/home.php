@@ -16,7 +16,7 @@
 							<div class="card-body">
 								<h5 class="card-title"><?php echo $recipe["title"] ?></h5>
 								<p class="card-text">Rp. <?php echo $recipe["price"] . ",00"?></p>
-								<a href="#" class="btn btn-primary">Beli</a>
+								<a href="<?php echo BASE . "/recipe/transaction?id=" . $recipe['id'] ?>" class="btn btn-primary">Beli</a>
 							</div>
 						</div>
 					</div>

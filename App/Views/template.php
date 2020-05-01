@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo BASE; ?>/assets/style.css">
   <script src="//cdn.ckeditor.com/4.14.0/basic/ckeditor.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
