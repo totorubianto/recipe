@@ -1,5 +1,10 @@
-<div class="container mt-5">
+<?php
+if(empty($_SESSION['status'])){
+	header("location:" . BASE . "/index/login");
+}
+?>
 
+<div class="container mt-5">
 	<div class="row">
 		<div class="col-md-9">
 			<div class="card">
@@ -37,19 +42,42 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form class="form-user" onSubmit="return validasi()">
+					<input type="number" hidden value="<?php echo $result['id'] ?>" name="recipe">
+					<input type="number" hidden value="<?php echo $_SESSION['id'] ?>" name="user">
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">Masukan Nama:</label>
-						<input type="text" class="form-control" id="recipient-name">
+						<input type="text" class="form-control" name="name" id="recipient-name">
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="col-form-label">Masukan No Rekening:</label>
-						<textarea class="form-control" id="message-text"></textarea>
+						<input type="number" class="form-control" name="norek" id="message-text">
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">Beli</button>
+				<button type="button" data-toggle="modal" onclick="myFunction()" class="btn btn-primary add-transaction">Beli</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="hehe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Instruksi Pembayaran</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>1. Masuk ke list recepient</p>
+				<p>2. Masukan ke no rekening yang disediakan</p>
+				<p>3. Upload Pembayaran</p>
+			</div>
+			<div class="modal-footer">
+				<a href="<?php echo BASE . "/recipe/checkout" ?>" type="button" data-target="#exampleModal" class="btn btn-primary">Ok</a>
 			</div>
 		</div>
 	</div>
@@ -65,4 +93,26 @@
 		// modal.find('.modal-title').text('New message to ' + recipient)
 		// modal.find('.modal-body input').val(recipient)
 	})
+	
+	function myFunction() {
+		$('#exampleModal').modal('hide')
+	}
+	$(".add-transaction").click(function(){
+		var data = $('.form-user').serialize();
+		$.ajax({
+			type: 'POST',
+			url: '<?php echo BASE . '/recipe/add_transaction' ?>',
+			data: data,
+			success: function(e) {
+				var json = JSON.parse(e)
+				if(json.name == "" || json.norek == "") {
+					alert("heh ini data dulu")
+				}
+				else{
+					$('#hehe').modal('show')
+				}
+
+			}
+		});
+	});
 </script>

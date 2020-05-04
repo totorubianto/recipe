@@ -1,12 +1,19 @@
 <div class="container">
 	<h1>HOME</h1>
-	<?php print_r($result) ?>
-	<?php foreach ($result as $key => $r) { 
-		echo $r['username'];
-	}
-	?>
+	
 	<div class="row">
-		<div class="col-md-3"></div>
+		<div class="col-md-3">
+			<form method="get" action="<?php BASE."/index/index" ?>">
+				<?php foreach ($tag as $ktag => $tag) { ?>
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" value="<?php echo $tag['id'] ?>" name="category[]" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1"><?php echo $tag['tagName'] ?></label>
+					</div>
+				<?php } ?>
+				
+				<input class="btn btn-primary w-100" type="submit" name="" value="filter">
+			</form>
+		</div>
 		<div class="col-md-9">
 			<div class="row">
 				<?php foreach ($recipe as $recipeKey => $recipe) { ?>

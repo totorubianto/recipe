@@ -32,10 +32,10 @@
             </div>
           </form>
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="<?php echo BASE.'/index' ?>">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">List Recepient</a>
+            <a class="nav-link" href="<?php echo BASE.'/recipe/checkout' ?>">List Recepient</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">My Favourit</a>

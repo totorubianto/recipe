@@ -12,8 +12,14 @@ class indexController extends Controller {
 	}
 	public function index() {
 		$result=$this->User->get();
-		$recipe=$this->Recipe->get();
-		$this->loadTemplate('home', array('recipe'=>$recipe, 'result'=>$result));
+		if (isset($_GET['category'])) {
+			$recipe=$this->Recipe->get($_GET['category']);
+		}else{
+
+			$recipe=$this->Recipe->get(null);
+		};
+		$tag=$this->Recipe->get_tag();
+		$this->loadTemplate('home', array('recipe'=>$recipe, 'result'=>$result, 'tag' => $tag ));
 	}
 
 	public function login() {
