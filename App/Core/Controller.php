@@ -32,6 +32,10 @@ class Controller {
         include 'App/Views/template2.php';
     }
 
+    public function loadTemplateAdmin($viewName, $viewData = array()){
+        include 'App/Views/templateadmin.php';
+    }
+
     public function loadViewInTemplate($viewName, $viewData) {
         extract($viewData);
         include 'App/Views/' . $viewName . '.php';
