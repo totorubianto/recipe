@@ -86,7 +86,6 @@ class Recipe extends Model{
 	}
 
 	public function add_transaction($data) {
-		var_dump($data['recipe']);
 		$sql="INSERT INTO transaction (recipe, user, status, norek, nameRek) VALUES ('$data[recipe]', '$data[user]', '$data[status]', '$data[norek]', '$data[name]')";
 		$result=$this->db->query($sql);
 	}

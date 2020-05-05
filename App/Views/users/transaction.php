@@ -97,6 +97,7 @@ if(empty($_SESSION['status'])){
 	function myFunction() {
 		$('#exampleModal').modal('hide')
 	}
+
 	$(".add-transaction").click(function(){
 		var data = $('.form-user').serialize();
 		$.ajax({

@@ -17,6 +17,11 @@ class adminController extends Controller {
 		$this->loadTemplateAdmin('admin/hehe');
 	}
 
+	public function transaction() {
+		$result=$this->Recipe->get_transaction();
+		$this->loadTemplate("admin/transaction",array('result'=>$result));
+	}
+
 	public function admin(){
 		$admin=$this->Admin->get_admin();
 		$this->loadTemplateAdmin('admin/admin', array('admin'=>$admin));

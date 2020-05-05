@@ -48,8 +48,13 @@ class recipeController extends Controller {
 		$data['user']=$_POST['user'];
 		$data['recipe']=$_POST['recipe'];
 		$data['status']= 0;
-		echo json_encode($data);
-		$result=$this->Recipe->add_transaction($data);
+		if($data['name'] !== "" && $data['norek'] !== ""){
+			$result=$this->Recipe->add_transaction($data);
+			echo json_encode($data);
+		}else{
+			echo json_encode($data);
+		}
+		
 	}
 
 	public function transaction(){
