@@ -18,8 +18,14 @@ class adminController extends Controller {
 	}
 
 	public function transaction() {
-		$result=$this->Recipe->get_transaction();
-		$this->loadTemplate("admin/transaction",array('result'=>$result));
+		$result=$this->Admin->get_transaction();
+		$this->loadTemplateadmin("admin/transaction",array('result'=>$result));
+	}
+
+	public function markcompleted() {
+		$id = $_GET['id'];
+		$result=$this->Admin->mark($id);
+		$this->transaction();
 	}
 
 	public function admin(){
@@ -37,14 +43,30 @@ class adminController extends Controller {
 		$admin=$this->Admin->delete_admin($id);;
 	}
 
+	public function edit(){
+		$id=$_POST['id'];
+		$data['name']=$_POST['name'];
+		$data['email']=$_POST['email'];
+		$data['password']=$_POST['password'];
+		$data['username']=$_POST['username'];
+		if ($data['name'] !== "" && $data['email'] !== "" && $data['password'] !== "" && $data['username'] !== "") {
+			$result=$this->Admin->edit_admin($id, $data['email'], $data['password'], $data['username'], $data['name']);
+		}else{
+			echo "<script type='text/javascript'>alert('Isi Semua data');</script>";
+		}
+		$this->admin();
+	}
+
 	public function add_admin(){
 		$data['name']=$_POST['name'];
 		$data['email']=$_POST['email'];
 		$data['password']=$_POST['password'];
 		$data['username']=$_POST['username'];
-		echo json_encode($data);
 		if ($data['name'] !== "" && $data['email'] !== "" && $data['password'] !== "" && $data['username'] !== "") {
 			$result=$this->Admin->add_admin($data['email'], $data['password'], $data['username'], $data['name']);
+		}else{
+			echo "<script type='text/javascript'>alert('Isi Semua data');</script>";
 		}
+		$this->admin();
 	}
 }

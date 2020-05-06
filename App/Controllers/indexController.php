@@ -36,6 +36,9 @@ class indexController extends Controller {
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$result=$this->User->action_login($email, $password);
+		// sleep(2);
+		$this->login();
+		// header("location:". BASE . '/index/login');
 	}
 
 	public function action_register(){

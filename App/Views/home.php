@@ -17,12 +17,16 @@
 		<div class="col-md-9">
 			<div class="row">
 				<?php foreach ($recipe as $recipeKey => $recipe) { ?>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="card" style="width: 100%">
 							<img class="card-img-top" src="<?php echo BASE . '/assets/images/uploads/image/' . $recipe['image'] ?>" alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title"><?php echo $recipe["title"] ?></h5>
-								<p class="card-text">Rp. <?php echo $recipe["price"] . ",00"?></p>
+								<p class="card-text">
+									<b>Rp. <?php echo $recipe["price"] . ",00"?> </b><br>
+									<?php echo $recipe["description"]?>
+								</p>
+								
 								<a href="<?php echo BASE . "/recipe/transaction?id=" . $recipe['id'] ?>" class="btn btn-primary">Beli</a>
 							</div>
 						</div>

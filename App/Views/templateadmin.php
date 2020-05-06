@@ -22,45 +22,45 @@
           CT
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          Toifatul Ulum
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="./dashboard.html">
+            <a href="<?php echo BASE . "/admin/admin" ?>">
               <i class="now-ui-icons design_app"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="./user.html">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
+              <p>Admin</p>
             </a>
           </li>
           <li>
             <a href="./tables.html">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
+              <p>User</p>
             </a>
           </li>
           <li>
-            <a href="./typography.html">
+            <a href="./tables.html">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Recipe</p>
+            </a>
+          </li>
+          <li>
+            <a href="./tables.html">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Report</p>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo BASE . "/admin/transaction" ?>">
               <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
+              <p>Transaction</p>
             </a>
           </li>
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Upgrade to PRO</p>
+              <p>Toifatul Ulum</p>
             </a>
           </li>
         </ul>

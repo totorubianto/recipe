@@ -46,7 +46,7 @@ class Recipe extends Model{
 			$uploadOk = 0;
 		}
 
-		$targetImage = PUBLIC_DIR. "/image/". basename($imageName);
+		$targetImage = PUBLIC_DIR. "/proof/". basename($imageName);
 
 		if ($uploadOk == 0) {
 			echo "Sorry, your file was not uploaded.";

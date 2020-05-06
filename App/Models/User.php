@@ -16,15 +16,15 @@ class User extends Model{
 		$result=$this->db->query($sql);
 		$check=mysqli_num_rows($result);
 		$fetch=$result->fetch_assoc();
-		if($check > 0){
+		if($check == 1){
 			$_SESSION['username'] = $fetch['username'];
 			$_SESSION['id'] = $fetch['id'];
 			$_SESSION['status'] = "login";
-			header("location:". BASE . '/index/login');
 		}else{
-			header("location:". BASE . '/');
+			echo "<script type='text/javascript'>alert('Username dan password anda tidak cocok');</script>";
+
 		}
-		var_dump($check);	
+		// header("location:". BASE . '/index/login');
 		return $result;
 	}
 
