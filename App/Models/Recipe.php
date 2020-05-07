@@ -18,13 +18,21 @@ class Recipe extends Model{
 		return $fetch;
 	}
 
-	public function get($category){
+	public function get($category, $search){
 		if (!empty($category)) {
-			$in = '(' . implode(',', $category) .')';
-			// $data = $this->get_tag_id($category);
-			$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author WHERE tag IN" . $in;
+			if (!empty($search)) {
+				$in = '(' . implode(',', $category) .')';
+				$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author WHERE tag IN" . $in . "title LIKE '$search'";
+			} else {
+				$in = '(' . implode(',', $category) .')';
+				$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author WHERE tag IN" . $in;
+			}
 		}else{
-			$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author";
+			if (!empty($search)) {
+				$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author WHERE title LIKE '$search'";
+			} else {
+				$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author";
+			}
 		}
 		$result=$this->db->query($sql);
 		return $result;
@@ -40,7 +48,6 @@ class Recipe extends Model{
 	}
 
 	public function update_transaction($id, $image){
-		var_dump($image, $id);
 		$imageName = mt_rand() . $image["name"];
 		$uploadOk = 1;
 		if ($image["size"] > 500000) {
@@ -72,7 +79,6 @@ class Recipe extends Model{
 	public function get_transaction(){
 		if(empty($_SESSION['id'])) header("location:". BASE . '/index/login');
 		$sql="SELECT transaction.id, transaction.recipe, transaction.user, transaction.date, transaction.status, transaction.norek, transaction.nameRek, transaction.proof, recipe.id as recipeId, recipe.content, recipe.cover, recipe.image, recipe.createdAt, recipe.tag, recipe.author, recipe.title, recipe.price, recipe.description, tag.id as tagId, tag.tagName FROM `transaction` LEFT JOIN recipe ON transaction.recipe = recipe.id LEFT JOIN tag ON recipe.tag = tag.id WHERE transaction.user='$_SESSION[id]'";
-		var_dump($sql);
 		// $sql="SELECT * FROM transaction LEFT JOIN recipe ON 'transaction.recipe' = 'recipe.id'";
 		$result=$this->db->query($sql);
 		return $result;

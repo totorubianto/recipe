@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Portal Berita</title>
+  <title>Ulum Kitchen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="<?php echo BASE; ?>/assets/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,7 +28,9 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
               </div>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              <form method="get">
+                <input type="text" name="search" class="form-control" placeholder="User" aria-label="Username" aria-describedby="basic-addon1">
+              </form>
             </div>
           </form>
           <li class="nav-item">

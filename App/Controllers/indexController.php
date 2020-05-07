@@ -12,11 +12,16 @@ class indexController extends Controller {
 	}
 	public function index() {
 		$result=$this->User->get();
-		if (isset($_GET['category'])) {
-			$recipe=$this->Recipe->get($_GET['category']);
-		}else{
-
-			$recipe=$this->Recipe->get(null);
+		if (isset($_GET['category']) || isset($_GET['search'])) {
+			if (isset($_GET['category']) && isset($_GET['search'])) {
+				$recipe=$this->Recipe->get($_GET['category'], $_GET['search']);
+			} else if(isset($_GET['category']) && !isset($_GET['search'])){
+				$recipe=$this->Recipe->get($_GET['category'], null);
+			} else {
+				$recipe=$this->Recipe->get(null, $_GET['search']);
+			} 
+		} else {
+			$recipe=$this->Recipe->get(null, null);
 		};
 		$tag=$this->Recipe->get_tag();
 		$this->loadTemplate('home', array('recipe'=>$recipe, 'result'=>$result, 'tag' => $tag ));
