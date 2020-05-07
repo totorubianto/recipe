@@ -34,7 +34,7 @@ class User extends Model{
 		return $result;
 	}
 
-	public function action_register($email, $password, $password_confirmation, $username){
+	public function action_register($email, $password, $password_confirmation, $username, $name){
 		$sql_check="SELECT * FROM users WHERE email='$email'";
 		$result_check=$this->db->query($sql_check);
 		$fetch=$result_check->fetch_assoc();
@@ -42,7 +42,7 @@ class User extends Model{
 			echo "<script type='text/javascript'>alert('email sudah terdaftar');</script>";
 			return $fetch;
 		}
-		$sql="INSERT INTO users (email, password, role, username) VALUES ('$email', '$password', 'USER', '$username');";
+		$sql="INSERT INTO users (email, password, role, username, name) VALUES ('$email', '$password', 'USER', '$username', '$name');";
 		$result=$this->db->query($sql);
 		header("location:". BASE . '/index/login');
 		return $result;

@@ -52,7 +52,8 @@ class indexController extends Controller {
 		$password = $_POST['password'];
 		$password_confirmation = $_POST['password_confirmation'];
 		$username = $_POST['username'];
-		$result=$this->User->action_register($email, $password, $password_confirmation, $username);
+		$name = $_POST['name'];
+		$result=$this->User->action_register($email, $password, $password_confirmation, $username, $name);
 		$this->register();
 	}
 

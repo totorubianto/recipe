@@ -72,6 +72,7 @@ class Recipe extends Model{
 	public function get_transaction(){
 		if(empty($_SESSION['id'])) header("location:". BASE . '/index/login');
 		$sql="SELECT transaction.id, transaction.recipe, transaction.user, transaction.date, transaction.status, transaction.norek, transaction.nameRek, transaction.proof, recipe.id as recipeId, recipe.content, recipe.cover, recipe.image, recipe.createdAt, recipe.tag, recipe.author, recipe.title, recipe.price, recipe.description, tag.id as tagId, tag.tagName FROM `transaction` LEFT JOIN recipe ON transaction.recipe = recipe.id LEFT JOIN tag ON recipe.tag = tag.id WHERE transaction.user='$_SESSION[id]'";
+		var_dump($sql);
 		// $sql="SELECT * FROM transaction LEFT JOIN recipe ON 'transaction.recipe' = 'recipe.id'";
 		$result=$this->db->query($sql);
 		return $result;
