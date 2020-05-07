@@ -96,7 +96,7 @@ class Recipe extends Model{
 	}
 
 	public function add_transaction($data) {
-		$sql="INSERT INTO transaction (recipe, user, status, norek, nameRek) VALUES ('$data[recipe]', '$data[user]', '$data[status]', '$data[norek]', '$data[name]')";
+		$sql="INSERT INTO transaction (recipe, user, status, norek, nameRek, proof) VALUES ('$data[recipe]', '$data[user]', '$data[status]', '$data[norek]', '$data[name]', '')";
 		$result=$this->db->query($sql);
 	}
 
