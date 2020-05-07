@@ -34,21 +34,15 @@
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="<?php echo BASE . "/admin/users" ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>User</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="<?php echo BASE . "/admin/recipe" ?>">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Recipe</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Report</p>
             </a>
           </li>
           <li>

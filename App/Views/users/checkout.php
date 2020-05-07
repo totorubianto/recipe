@@ -29,7 +29,7 @@
 					</td>
 					<td>
 						<?php if($transaction['status'] == 2){ ?>
-							<div>Buka Recipe</div>
+							<a href="<?php echo BASE . "/index/myrecipe?id=" . $transaction['recipeId']?>">Buka Recipe</a>
 						<?php }else{ ?>
 							<form method="post" action="<?php echo BASE .'/recipe/update_transaction' ?>" enctype="multipart/form-data">
 								<input type="number" name="id" hidden value="<?php echo $transaction['id']?>">

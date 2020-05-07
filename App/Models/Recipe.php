@@ -22,12 +22,21 @@ class Recipe extends Model{
 		if (!empty($category)) {
 			$in = '(' . implode(',', $category) .')';
 			// $data = $this->get_tag_id($category);
-			$sql="SELECT * FROM recipe WHERE tag IN" . $in;
+			$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author WHERE tag IN" . $in;
 		}else{
-			$sql="SELECT * FROM recipe";
+			$sql="SELECT recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author";
 		}
 		$result=$this->db->query($sql);
 		return $result;
+	}
+
+	public function delete($id){
+		$sql="DELETE FROM transaction WHERE recipe=$id";
+		$result=$this->db->query($sql);
+		$sql="DELETE FROM recipe WHERE id=$id";
+		$result=$this->db->query($sql);
+		var_dump($result, $id);
+		// header("location:". BASE . '/admin/admin');
 	}
 
 	public function update_transaction($id, $image){

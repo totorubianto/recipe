@@ -11,6 +11,12 @@ class User extends Model{
 		return $result;
 	}
 
+	public function get_user(){
+		$sql="SELECT * FROM users WHERE role='USER'";
+		$result=$this->db->query($sql);
+		return $result;
+	}
+
 	public function action_Login($email, $password){
 		$sql="SELECT * FROM users WHERE email='$email' AND password='$password'";
 		$result=$this->db->query($sql);

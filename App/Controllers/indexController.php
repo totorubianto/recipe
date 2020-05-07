@@ -32,6 +32,12 @@ class indexController extends Controller {
 		$this->loadTemplate2('users/register', array('result'=>$result));
 	}
 
+	public function myrecipe() {
+		$id = $_GET['id'];
+		$result=$this->Recipe->detail($id);
+		$this->loadTemplate('users/myrecipe', array('result'=>$result));
+	}
+
 	public function action_login(){
 		$email = $_POST['email'];
 		$password = $_POST['password'];

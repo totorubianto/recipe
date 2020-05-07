@@ -14,7 +14,7 @@ class adminController extends Controller {
 	}
 	
 	public function index(){
-		$this->loadTemplateAdmin('admin/hehe');
+		$this->admin();
 	}
 
 	public function transaction() {
@@ -33,6 +33,21 @@ class adminController extends Controller {
 		$this->loadTemplateAdmin('admin/admin', array('admin'=>$admin));
 	}
 
+	public function users(){
+		$admin=$this->User->get_user();
+		$this->loadTemplateAdmin('admin/users', array('admin'=>$admin));
+	}
+
+	public function recipe(){
+		$recipe=$this->Recipe->get(null);
+		$this->loadTemplateAdmin('admin/recipe', array('recipe'=>$recipe));
+	}
+
+	public function delete_recipe(){
+		$id = $_GET['id'];
+		$result=$this->Recipe->delete($id);
+	}
+
 	public function delete(){
 		if (isset($_GET['id'])) {
 			$id=$_GET['id'];
@@ -49,12 +64,19 @@ class adminController extends Controller {
 		$data['email']=$_POST['email'];
 		$data['password']=$_POST['password'];
 		$data['username']=$_POST['username'];
+		$data['role']=$_POST['role'];
 		if ($data['name'] !== "" && $data['email'] !== "" && $data['password'] !== "" && $data['username'] !== "") {
-			$result=$this->Admin->edit_admin($id, $data['email'], $data['password'], $data['username'], $data['name']);
+			$result=$this->Admin->edit_admin($id, $data['email'], $data['password'], $data['username'], $data['name'], $data['role']);
 		}else{
 			echo "<script type='text/javascript'>alert('Isi Semua data');</script>";
 		}
-		$this->admin();
+		if ($data['role'] == "USER") {
+			$this->users();
+		} else {
+			$this->admin();
+		}
+		
+		
 	}
 
 	public function add_admin(){

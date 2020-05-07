@@ -99,7 +99,7 @@
                  <?php echo $value['email']; ?>
                </td>
                <td>
-                <a href="" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $value['id'] ?>">Edit</a>
+                <a href="" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $value['id'] ?>" data-role="<?php echo $value['role'] ?>">Edit</a>
                 <a href="<?php echo BASE ."/admin/delete?id=". $value['id'] ?>" class="btn btn-danger">Delete</a></td>
               </tr>
             <?php } ?>
@@ -124,6 +124,7 @@
 
        <form method="post" action="<?php echo BASE . "/admin/edit" ?>">
         <input type="text" class="id" hidden name="id">
+        <input type="text" class="role" hidden name="role">
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">Username:</label>
           <input type="text" name="username" class="form-control" id="recipient-name">
@@ -156,7 +157,10 @@
   $('#exampleModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
     var recipient = button.data('whatever') 
+    var role = button.data('role') 
     var modal = $(this)
+    console.log(role)
     modal.find('.modal-body .id').val(recipient)
+    modal.find('.modal-body .role').val(role)
   })
 </script>

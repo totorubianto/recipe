@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE; ?>/assets/style.css">
 </head>
 <body>
-<?php $this->loadViewInTemplate($viewName, $viewData); ?>
+	<?php $this->loadViewInTemplate($viewName, $viewData); ?>
 </body>
+
 </html>

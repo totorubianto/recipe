@@ -23,7 +23,7 @@ class Admin extends Model{
 	public function edit_admin($id, $email, $password, $username, $name){
 		$sql = "UPDATE users SET email='$email', password='$password', username='$username', name='$name' WHERE id='$id'";
 		$result=$this->db->query($sql);
-		header("location:". BASE . '/admin/admin');
+		return $result;
 	}
 
 	public function add_admin($email, $password, $username, $name ){
