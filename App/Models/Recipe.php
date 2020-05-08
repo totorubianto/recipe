@@ -131,7 +131,8 @@ class Recipe extends Model{
 		} else {
 			move_uploaded_file($image["tmp_name"], $targetImage);
 			move_uploaded_file($cover["tmp_name"], $targetCover);
-			$sql="INSERT INTO recipe (image, cover, content, tag, author, title, price) VALUES ('$imageName', '$coverName', '$content', '$tag', '$author', '$title', '$price')";
+			$currentDateTime = date('Y-m-d H:i:s');
+			$sql="INSERT INTO recipe (image, cover, content, tag, author, title, price, createdAt) VALUES ('$imageName', '$coverName', '$content', '$tag', '$author', '$title', '$price', '$currentDateTime')";
 			$result=$this->db->query($sql);
 			header("location:". BASE . '/index');
 			return $result;
