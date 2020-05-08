@@ -29,7 +29,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
               </div>
               <form method="get">
-                <input type="text" name="search" class="form-control" placeholder="User" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" name="search" class="form-control" placeholder="search recipe" aria-label="Username" aria-describedby="basic-addon1">
               </form>
             </div>
           </form>
@@ -38,9 +38,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo BASE.'/recipe/checkout' ?>">List Recepient</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Favourit</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
