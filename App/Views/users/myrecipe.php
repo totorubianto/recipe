@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-3">
 			<div class="card">
-				<img src="<?php echo BASE . '/assets/images/uploads/image/'. $result['image'] ?>">
+				<img width="100%" src="<?php echo BASE . '/assets/images/uploads/image/'. $result['image'] ?>">
 				<div class="p-3">
 					<p>
 						Resep : <?php echo $result['title'] ?> <br>
