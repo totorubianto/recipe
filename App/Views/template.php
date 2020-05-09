@@ -47,8 +47,15 @@
           <ul class="navbar-nav mr-auto">
             <?php if(!empty($_SESSION['username'])){ ?>
               <a href="<?php echo BASE . '/recipe/add_recipe'?>" class="btn btn-primary my-2 mr-2 my-sm-0">Add Receipe</a> 
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo BASE . '/index/action_logout'?>"><?php echo $_SESSION['username']?></a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php echo $_SESSION['username']?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $_SESSION['id'] ?>" data-role="<?php echo $_SESSION['role'] ?>" class="dropdown-item" href="#">Edit Account</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="<?php echo BASE . '/index/action_logout'?>">Logout</a>
+                </div>
               </li>
             <?php } else{ ?>  
               <a href="<?php echo BASE . '/index/login'?>" class="btn btn-primary my-2 my-sm-0" type="submit">login</a> 
@@ -63,6 +70,59 @@
   <?php $this->loadViewInTemplate($viewName, $viewData); ?>
 
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+ <h6 class="modal-title" id="exampleModalLabel">Untuk Perubahan anda harus logout kemudian login lagi</h6>
+        <form method="post" action="<?php echo BASE . "/admin/edit" ?>">
+          <input type="text" class="id" hidden name="id">
+          <input type="text" class="role" hidden name="role">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Username:</label>
+            <input type="text" name="username" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" name="name" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Password:</label>
+            <input type="password" name="password" class="form-control" id="recipient-name">
+          </div>
+
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Email:</label>
+            <input type="email" name="email" class="form-control" id="recipient-name">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" data-toggle="modal" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var recipient = button.data('whatever') 
+    var role = button.data('role') 
+    var modal = $(this)
+    console.log(role)
+    modal.find('.modal-body .id').val(recipient)
+    modal.find('.modal-body .role').val(role)
+  })
+</script>
 </body>
 </html>
 
