@@ -42,7 +42,7 @@
 									<?php echo $value['price']; ?>
 								</td>
 								<td>
-									<img src="<?php echo BASE . '/assets/images/uploads/image/' . $value['image']?>">
+									<img width="300" src="<?php echo BASE . '/assets/images/uploads/image/' . $value['image']?>">
 								</td>
 								<td>
 									<a href="<?php echo BASE . '/admin/delete_recipe?id=' .  $value['id'] ?>" class="btn btn-danger mr-2">Delete</a>

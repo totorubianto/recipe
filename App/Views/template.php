@@ -37,7 +37,10 @@
             <a class="nav-link" href="<?php echo BASE.'/index' ?>">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo BASE.'/recipe/checkout' ?>">List Recepient</a>
+            <a class="nav-link" href="<?php echo BASE.'/recipe/checkout' ?>">List Recipe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo BASE.'/recipe/myrecipelist' ?>">My Recipe</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

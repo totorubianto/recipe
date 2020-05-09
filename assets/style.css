@@ -13,8 +13,16 @@
 	padding: 30px 30px;
 }
 
+.gradient{
+	border-radius: 17px !important;
+	padding: 20px;
+	height: 100%;
+	display: flex;
+	background: linear-gradient(7.61deg, #6979F8 15.98%, #5494e282);
+}
 .login-form{
 	width: 50% !important;
+
 }
 
 .btn-primary{

@@ -22,6 +22,32 @@ class adminController extends Controller {
 		$this->loadTemplateadmin("admin/transaction",array('result'=>$result));
 	}
 
+	public function tags() {
+		$result=$this->Recipe->get_tag();
+		$this->loadTemplateadmin("admin/tag",array('result'=>$result));
+	}
+
+
+	public function deleteTags() {
+		$id = $_GET['id'];
+		$result=$this->Recipe->deleteTag($id);
+		$this->loadTemplateadmin("admin/tag",array('result'=>$result));
+	}
+
+	public function addTags() {
+		$tagName = $_POST['tagName'];
+		$result=$this->Recipe->addTag($tagName);
+		$this->tags();
+	}
+
+	public function editTags() {
+		$tagName = $_POST['tagName'];
+		$id = $_POST['id'];
+		$result=$this->Recipe->editTag($tagName, $id);
+		$this->tags();
+	}
+
+
 	public function markcompleted() {
 		$id = $_GET['id'];
 		$result=$this->Admin->mark($id);
@@ -39,7 +65,7 @@ class adminController extends Controller {
 	}
 
 	public function recipe(){
-		$recipe=$this->Recipe->get(null);
+		$recipe=$this->Recipe->get(null, null);
 		$this->loadTemplateAdmin('admin/recipe', array('recipe'=>$recipe));
 	}
 

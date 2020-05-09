@@ -6,7 +6,7 @@
 		<div class="d-flex justify-content-between align-items-center flex-column login-wrapper2" >
 			<div class="d-flex justify-content-end text-right w-100 mb-3">
 				<span class="mr-2">Have an account?</span>
-				<a href="<?php echo BASE; ?>/index/login">Login</a>
+				<a href="<?php echo BASE; ?>/index/login"> Login</a>
 			</div>
 			<form class="login-form" method="post" action="<?php echo BASE; ?>/index/action_register" onSubmit="return validasi()">
 				<div>

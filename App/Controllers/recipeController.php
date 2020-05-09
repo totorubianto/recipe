@@ -14,6 +14,18 @@ class recipeController extends Controller {
 		$this->loadTemplate("users/add-recipe", array('result'=>$result));
 	}
 
+	public function edit(){
+		if (isset($_GET['id'])) {
+			$id = $_GET['id'];
+		} else {
+			$id = null;
+		}
+		
+		$recipe=$this->Recipe->getId($id);
+		$result=$this->Recipe->get_tag();
+		$this->loadTemplate("users/edit-recipe", array('result'=>$result, 'recipe'=>$recipe));
+	}
+
 	public function detail(){
 		$id = $_GET["id"];
 		$result=$this->Recipe->detail($id);
@@ -23,6 +35,21 @@ class recipeController extends Controller {
 	public function checkout() {
 		$result=$this->Recipe->get_transaction();
 		$this->loadTemplate("users/checkout",array('result'=>$result));
+	}
+
+	public function myrecipelist() {
+		$recipe=$this->Recipe->getme();
+		$this->loadTemplate("users/recipelist", array('recipe'=>$recipe));
+	}
+
+	public function action_edit_recipe(){
+		$content = $_POST['content'];
+		$tag = $_POST['tag'];
+		$title = $_POST['title'];
+		$price = $_POST['price'];
+		$desc = $_POST['description'];
+		$id = $_POST['id'];
+		$result=$this->Recipe->action_edit_recipe($content, $tag, $title, $price, $desc, $id);
 	}
 
 	public function update_transaction(){
@@ -39,7 +66,8 @@ class recipeController extends Controller {
 		$author = $_POST['users'];
 		$title = $_POST['title'];
 		$price = $_POST['price'];
-		$result=$this->Recipe->action_save_recipe($image, $cover, $content, $tag, $author, $title, $price);
+		$desc = $_POST['description'];
+		$result=$this->Recipe->action_save_recipe($image, $cover, $content, $tag, $author, $title, $price, $desc);
 	}
 
 	public function add_transaction() {

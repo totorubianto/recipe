@@ -12,11 +12,19 @@
 	<link href="<?php echo BASE; ?>/assets/admin/demo/demo.css" rel="stylesheet" />
 </head>
 <body>
-	<div class="wrapper ">
+  <?php if (isset($_SESSION)) {
+    if ($_SESSION['role'] !== "ADMIN") {
+      header("location:". BASE . '/index/login');
+    }
+  } else {
+    header("location:". BASE . '/index/login');
+  }
+  ?>
+  <div class="wrapper ">
     <div class="sidebar" data-color="blue">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
+      -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           CT
@@ -51,12 +59,18 @@
               <p>Transaction</p>
             </a>
           </li>
-          <li class="active-pro">
+          <li>
+            <a href="<?php echo BASE . "/admin/tags" ?>">
+              <i class="now-ui-icons text_caps-small"></i>
+              <p>Tag</p>
+            </a>
+          </li>
+          <!-- <li class="active-pro">
             <a href="./upgrade.html">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
               <p>Toifatul Ulum</p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -91,14 +105,6 @@
               </div>
             </form>
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons media-2_sound-wave"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons location_world"></i>
@@ -107,18 +113,8 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="<?php echo BASE . '/index/action_logout'?>">Logout</a>
                 </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
               </li>
             </ul>
           </div>
@@ -158,7 +154,7 @@
       </footer>
     </div>
   </div>
-	
+
 </body>
 <script src="<?php echo BASE; ?>/assets/admin/js/core/popper.min.js"></script>
 <script src="<?php echo BASE; ?>/assets/admin/js/core/bootstrap.min.js"></script>
@@ -175,7 +171,7 @@
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
 
-  });
-</script>
+    });
+  </script>
 
-</html>
+  </html>

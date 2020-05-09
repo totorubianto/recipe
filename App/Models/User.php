@@ -26,9 +26,16 @@ class User extends Model{
 			$_SESSION['username'] = $fetch['username'];
 			$_SESSION['id'] = $fetch['id'];
 			$_SESSION['status'] = "login";
+			$_SESSION['role'] = $fetch['role'];
+			var_dump($fetch['role']);
+			if ($_SESSION['role'] == "ADMIN") {
+				header("location:". BASE . '/admin');
+			} else {
+				header("location:". BASE . '/index/login');
+			}
+			
 		}else{
 			echo "<script type='text/javascript'>alert('Username dan password anda tidak cocok');</script>";
-
 		}
 		// header("location:". BASE . '/index/login');
 		return $result;

@@ -11,6 +11,7 @@ class indexController extends Controller {
 		$this->Recipe=new Recipe;
 	}
 	public function index() {
+		$jumlah = $this->Recipe->getCount();
 		$result=$this->User->get();
 		if (isset($_GET['category']) || isset($_GET['search'])) {
 			if (isset($_GET['category']) && isset($_GET['search'])) {
@@ -24,7 +25,7 @@ class indexController extends Controller {
 			$recipe=$this->Recipe->get(null, null);
 		};
 		$tag=$this->Recipe->get_tag();
-		$this->loadTemplate('home', array('recipe'=>$recipe, 'result'=>$result, 'tag' => $tag ));
+		$this->loadTemplate('home', array('recipe'=>$recipe, 'result'=>$result, 'tag' => $tag,'jumlah' => $jumlah ));
 	}
 
 	public function login() {
@@ -48,7 +49,7 @@ class indexController extends Controller {
 		$password = $_POST['password'];
 		$result=$this->User->action_login($email, $password);
 		// sleep(2);
-		$this->login();
+		// $this->login();
 		// header("location:". BASE . '/index/login');
 	}
 

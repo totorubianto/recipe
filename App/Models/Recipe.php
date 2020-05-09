@@ -18,6 +18,29 @@ class Recipe extends Model{
 		return $fetch;
 	}
 
+	public function getme(){
+		if(empty($_SESSION['id'])) header("location:". BASE . '/index/login');
+		$sql="SELECT recipe.createdAt, recipe.id, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author WHERE users.id = '$_SESSION[id]'";
+		$result=$this->db->query($sql);
+		return $result;
+	}
+
+	public function getCount(){
+		if(isset($_SESSION['id'])) {
+			$sql="SELECT COUNT(id) AS numberRecipe FROM recipe WHERE author = '$_SESSION[id]'";
+			$result=$this->db->query($sql);
+			$result=$result->fetch_assoc();
+			return $result;
+		}
+	}
+
+	public function getId($id){
+		$sql="SELECT recipe.id, recipe.content, users.name, recipe.price, users.id as usersId, recipe.description, recipe.title, recipe.image FROM recipe LEFT JOIN users ON users.id = recipe.author WHERE recipe.id = '$id'";
+		$result=$this->db->query($sql);
+		$result=$result->fetch_assoc();
+		return $result;
+	}
+
 	public function get($category, $search){
 		if (!empty($category)) {
 			if (!empty($search)) {
@@ -44,8 +67,41 @@ class Recipe extends Model{
 		$sql="DELETE FROM recipe WHERE id=$id";
 		$result=$this->db->query($sql);
 		var_dump($result, $id);
+		if ($_SESSION['role'] == "ADMIN") {
+			header("location:". BASE . '/admin/admin');
+		} else {
+			header("location:". BASE . '/recipe/myrecipelist');
+		}
+		
 		// header("location:". BASE . '/admin/admin');
 	}
+
+	public function deleteTag($id){
+		// $sql="DELETE FROM transaction WHERE recipe=$id";
+		// $result=$this->db->query($sql);
+		$sql="DELETE FROM recipe WHERE tag='$id'";
+		$result=$this->db->query($sql);
+		$sql="DELETE FROM tag WHERE id='$id'";
+		$result=$this->db->query($sql);
+		if ($_SESSION['role'] == "ADMIN") {
+			header("location:". BASE . '/admin/tags');
+		} 
+		
+		// header("location:". BASE . '/admin/admin');
+	}
+
+	public function addTag($data) {
+		$sql="INSERT INTO tag (tagName) VALUES ('$data')";
+		$result=$this->db->query($sql);
+		return $result;
+	}
+
+	public function editTag($tagName, $id) {
+		$sql = "UPDATE tag SET tagName='$tagName' WHERE id='$id'";
+		$result=$this->db->query($sql);
+		return $result;
+	}
+
 
 	public function update_transaction($id, $image){
 		$imageName = mt_rand() . $image["name"];
@@ -102,11 +158,12 @@ class Recipe extends Model{
 	}
 
 	public function add_transaction($data) {
-		$sql="INSERT INTO transaction (recipe, user, status, norek, nameRek, proof) VALUES ('$data[recipe]', '$data[user]', '$data[status]', '$data[norek]', '$data[name]', '')";
+		$currentDateTime = date('Y-m-d H:i:s');
+		$sql="INSERT INTO transaction (recipe, user, status, norek, nameRek, proof, date) VALUES ('$data[recipe]', '$data[user]', '$data[status]', '$data[norek]', '$data[name]', '', '$currentDateTime')";
 		$result=$this->db->query($sql);
 	}
 
-	public function action_save_recipe($image, $cover, $content, $tag, $author, $title, $price){
+	public function action_save_recipe($image, $cover, $content, $tag, $author, $title, $price, $description){
 		$imageName = mt_rand() . $image["name"];
 		$coverName = mt_rand() . $cover["name"];
 		$uploadOk = 1;
@@ -132,10 +189,17 @@ class Recipe extends Model{
 			move_uploaded_file($image["tmp_name"], $targetImage);
 			move_uploaded_file($cover["tmp_name"], $targetCover);
 			$currentDateTime = date('Y-m-d H:i:s');
-			$sql="INSERT INTO recipe (image, cover, content, tag, author, title, price, createdAt) VALUES ('$imageName', '$coverName', '$content', '$tag', '$author', '$title', '$price', '$currentDateTime')";
+			$sql="INSERT INTO recipe (image, cover, content, tag, author, title, price, createdAt, description) VALUES ('$imageName', '$coverName', '$content', '$tag', '$author', '$title', '$price', '$currentDateTime', '$description')";
 			$result=$this->db->query($sql);
 			header("location:". BASE . '/index');
 			return $result;
 		}
+	}
+
+	public function action_edit_recipe($content, $tag, $title, $price, $description, $id){
+		$sql="UPDATE recipe SET content='$content', tag='$tag', title='$title', price='$price', description='$description' WHERE id='$id'";
+		$result=$this->db->query($sql);
+		header("location:". BASE . '/recipe/myrecipelist');
+		return $result;
 	}
 }

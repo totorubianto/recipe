@@ -11,6 +11,10 @@
 			<label for="judul">Masukan Harga</label>
 			<input type="number" class="form-control" id="judul" name="price" placeholder="Masukan Harga">
 		</div>
+		<div class="form-group">
+			<label for="judul">Masukan Description</label>
+			<textarea class="form-control" name="description"></textarea>
+		</div>
 		<div class="input-group mb-3">
 			<select class="custom-select" name="tag" id="inputGroupSelect02">
 				<option selected>Choose...</option>
