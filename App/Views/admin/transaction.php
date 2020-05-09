@@ -36,7 +36,7 @@
 									<?php echo $value['title']; ?>
 								</td>
 								<td>
-									<img width="100%" src="<?php echo BASE . '/assets/images/uploads/proof/' . $value['proof']?>">
+									<img width="300px" src="<?php echo BASE . '/assets/images/uploads/proof/' . $value['proof']?>">
 								</td>
 								<td>
 									<?php echo $value['email']; ?>
