@@ -27,6 +27,8 @@ class User extends Model{
 			$_SESSION['id'] = $fetch['id'];
 			$_SESSION['status'] = "login";
 			$_SESSION['role'] = $fetch['role'];
+			$_SESSION['email'] = $fetch['email'];
+			$_SESSION['name'] = $fetch['name'];
 			var_dump($fetch['role']);
 			if ($_SESSION['role'] == "ADMIN") {
 				header("location:". BASE . '/admin');

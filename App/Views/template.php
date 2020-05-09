@@ -87,11 +87,11 @@
           <input type="text" class="role" hidden name="role">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Username:</label>
-            <input type="text" name="username" class="form-control" id="recipient-name">
+            <input type="text" name="username" value="<?php echo $_SESSION['username'] ?>" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Name:</label>
-            <input type="text" name="name" class="form-control" id="recipient-name">
+            <input type="text" name="name" class="form-control" value="<?php echo $_SESSION['name'] ?>" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Password:</label>
@@ -100,7 +100,7 @@
 
           <div class="form-group">
             <label for="message-text" class="col-form-label">Email:</label>
-            <input type="email" name="email" class="form-control" id="recipient-name">
+            <input type="email" name="email" value="<?php echo $_SESSION['email'] ?>" class="form-control" id="recipient-name">
           </div>
           <div class="modal-footer">
             <button type="submit" data-toggle="modal" class="btn btn-primary">Simpan</button>
