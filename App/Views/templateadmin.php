@@ -62,7 +62,7 @@
     		<li>
     			<a href="<?php echo BASE . "/admin/tags" ?>">
     				<i class="now-ui-icons text_caps-small"></i>
-    				<p>Tag</p>
+    				<p>Category</p>
     			</a>
     		</li>
           <!-- <li class="active-pro">
@@ -86,7 +86,7 @@
 						<span class="navbar-toggler-bar bar3"></span>
 					</button>
 				</div>
-				<a class="navbar-brand" href="#pablo">User Profile</a>
+				<a class="navbar-brand" href="#pablo">Admin Site</a>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-bar navbar-kebab"></span>
