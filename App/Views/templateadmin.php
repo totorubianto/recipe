@@ -113,7 +113,7 @@
 							</p>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-							<a href="" class="dropdown-item" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $_SESSION['id'] ?>" data-role="<?php echo $_SESSION['role'] ?>">Edit Profile</a>
+							<a href="" class="dropdown-item" data-toggle="modal" data-target="#exampleModal1" data-whatever="<?php echo $_SESSION['id'] ?>" data-role="<?php echo $_SESSION['role'] ?>">Edit Profile</a>
 							<a class="dropdown-item" href="<?php echo BASE . '/index/action_logout'?>">Logout</a>
 						</div>
 
@@ -158,11 +158,11 @@
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Edit Admin</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -174,20 +174,20 @@
 					<input type="text" class="role" hidden name="role">
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">Username:</label>
-						<input type="text" name="username" class="form-control" id="recipient-name">
+						<input type="text" value="<?php echo $_SESSION['username'] ?>" name="username" class="form-control" id="recipient-name">
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">Name:</label>
-						<input type="text" name="name" class="form-control" id="recipient-name">
+						<input type="text" value="<?php echo $_SESSION['name'] ?>" name="name" class="form-control" id="recipient-name">
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">Password:</label>
-						<input type="password" name="password" class="form-control" id="recipient-name">
+						<input type="password"  name="password" class="form-control" id="recipient-name">
 					</div>
 
 					<div class="form-group">
 						<label for="message-text" class="col-form-label">Email:</label>
-						<input type="email" name="email" class="form-control" id="recipient-name">
+						<input type="email" value="<?php echo $_SESSION['email'] ?>" name="email" class="form-control" id="recipient-name">
 					</div>
 					<div class="modal-footer">
 						<button type="submit" data-toggle="modal" class="btn btn-primary">Simpan</button>
