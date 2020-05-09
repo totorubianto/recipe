@@ -38,6 +38,7 @@ class User extends Model{
 			
 		}else{
 			echo "<script type='text/javascript'>alert('Username dan password anda tidak cocok');</script>";
+			header("location:". BASE . '/index/login');
 		}
 		// header("location:". BASE . '/index/login');
 		return $result;
