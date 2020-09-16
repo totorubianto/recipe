@@ -1,4 +1,4 @@
-# Custom MVC Sederhana Dengan Autoload PSR4 by Toifatul Ulum
+# Custom MVC Sederhana Dengan Autoload PSR4 by Toto Rubianto
 
 Bagi yang mengimplementasikan OOP ketika koding PHP, pasti tidak asing dengan implementasi pemanggilan class di file yang berbeda. Biasanya file yang berisi class tersebut dipanggil menggunakan require atau include. Suatu hal yang tidak efisien ialah ketika akan akan menggunakan banyak class, programmer membuat setiap class dalam satu file tersendiri dan jika akan menggunakannya programmer meng-include-kan satu per satu file class pada permulaan baris kode. Ini bukan masalah jika hanya melakukan include satu, dua atau lima file, tapi jika puluhan? ratusan bahkan lebih?. Dengan Autoload PSR4 akan mempermudah programer dalam pemanggilan class 
 
